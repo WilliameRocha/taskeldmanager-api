@@ -2,6 +2,8 @@ package com.eldorado.task.manager.domain.user;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -25,13 +27,13 @@ public class User {
     @Column(unique = true, nullable = false, length = 100)
     private String email;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 200)
     private String password;
 
-//    @PrePersist
-//    @PreUpdate
-//    public void encryptPassword() {
-//        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//        this.password = passwordEncoder.encode(this.password);
-//    }
+    @PrePersist
+    @PreUpdate
+    public void encryptPassword() {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.password = passwordEncoder.encode(this.password);
+    }
 }
