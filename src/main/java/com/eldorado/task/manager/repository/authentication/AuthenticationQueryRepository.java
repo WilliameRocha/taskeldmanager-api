@@ -4,15 +4,9 @@ import com.eldorado.task.manager.domain.user.User;
 import com.eldorado.task.manager.repository.interfaces.authentication.IAuthenticationQueryRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
 
 @Repository
 public class AuthenticationQueryRepository implements IAuthenticationQueryRepository {

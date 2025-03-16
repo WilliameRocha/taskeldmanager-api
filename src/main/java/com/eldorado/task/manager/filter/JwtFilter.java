@@ -21,8 +21,8 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Autowired
     private JwtGenerator jwtGenerator;
-//    @Autowired
-//    private IAuthenticationQueryService iAuthenticationQueryService;
+    @Autowired
+    private IAuthenticationQueryService iAuthenticationQueryService;
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
@@ -37,16 +37,16 @@ public class JwtFilter extends OncePerRequestFilter {
             String token = authorizationHeader.substring(7);
             String email = this.jwtGenerator.extractEmail(token);
 
-//            if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-//                if (this.jwtGenerator.isTokenValid(token, email)) {
-//
-//                    UserDetails userDetails = iAuthenticationQueryService.loadUserByEmail(email);
-//
-//                    UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-//                            userDetails, null, userDetails.getAuthorities());
-//                    SecurityContextHolder.getContext().setAuthentication(authToken);
-//                }
-//            }
+            if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                if (this.jwtGenerator.isValidToken(token, email)) {
+
+                    UserDetails userDetails = iAuthenticationQueryService.loadUserByEmail(email);
+                    System.out.println(userDetails.getAuthorities());
+                    UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                            userDetails, null, userDetails.getAuthorities());
+                    SecurityContextHolder.getContext().setAuthentication(authToken);
+                }
+            }
         }
         filterChain.doFilter(request, response);
     }

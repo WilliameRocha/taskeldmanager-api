@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDetailImpService implements UserDetailsService/*, IAuthenticationQueryService*/ {
+public class UserDetailImpService implements UserDetailsService {
 
     private final IAuthenticationQueryRepository iAuthenticationQueryRepository;
 
@@ -25,9 +25,4 @@ public class UserDetailImpService implements UserDetailsService/*, IAuthenticati
         }
         return userDetails;
     }
-
-//    @Override
-//    public UserDetails loadUserByEmail(String email) {
-//        return this.iAuthenticationQueryRepository.loadUserByEmail(email);
-//    }
 }
