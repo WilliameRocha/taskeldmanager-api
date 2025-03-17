@@ -5,7 +5,6 @@ import com.eldorado.task.manager.domain.dto.user.UserCommandDTO;
 import com.eldorado.task.manager.domain.dto.user.UserQueryDTO;
 import com.eldorado.task.manager.service.command.interfaces.user.IUserCommandService;
 import com.eldorado.task.manager.service.command.interfaces.user.IUserQueryService;
-import com.eldorado.task.manager.util.JwtGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.util.Optional;
 
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -65,5 +62,14 @@ public class AuthControllerTest {
                         .param("password", password)
                         .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk());
+    }
+
+    @Test
+    void testLoginUnsuccessfully() throws Exception{
+        this.mockMvc.perform(post("/auth/login")
+                        .param("email", email)
+                        .param("password", "xxxx")
+                        .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isForbidden());
     }
 }
