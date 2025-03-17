@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @Builder
 @Entity
+@Table(name = "task")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Task {
