@@ -50,7 +50,6 @@ public class AuthControllerTest {
                     .password(password)
                     .build();
             this.iUserCommandService.createUser(userCommandDTO);
-
         }
     }
 
