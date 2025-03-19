@@ -1,4 +1,4 @@
-package com.eldorado.task.manager.service.command;
+package com.eldorado.task.manager.service.command.user;
 
 import com.eldorado.task.manager.TaskEldManagerApplicationTests;
 import com.eldorado.task.manager.domain.dto.user.UserCommandDTO;
