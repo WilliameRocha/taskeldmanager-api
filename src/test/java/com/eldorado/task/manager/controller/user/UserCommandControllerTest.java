@@ -51,7 +51,8 @@ public class UserCommandControllerTest {
         if(user.isEmpty()) {
 
             UserCommandDTO userCommandDTO = UserCommandDTO.builder()
-                    .name("Williame Rocha")
+                    .firstName("Williame")
+                    .lastName("Rocha")
                     .email(email)
                     .password("123456")
                     .build();

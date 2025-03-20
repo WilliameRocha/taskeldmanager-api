@@ -2,6 +2,7 @@ package com.eldorado.task.manager.controller.authentication;
 
 import com.eldorado.task.manager.domain.dto.user.UserAuthDTO;
 import com.eldorado.task.manager.domain.dto.user.UserCommandDTO;
+import com.eldorado.task.manager.domain.user.User;
 import com.eldorado.task.manager.service.command.interfaces.user.IUserCommandService;
 import com.eldorado.task.manager.util.JwtGenerator;
 import jakarta.validation.Valid;
@@ -31,8 +32,8 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Boolean> register(@Valid @RequestBody UserCommandDTO user) {
-        this.iUserCommandService.createUser(user);
-        return ResponseEntity.ok(true);
+    public ResponseEntity<User> register(@Valid @RequestBody UserCommandDTO user) {
+        User newUser = this.iUserCommandService.createUser(user);
+        return ResponseEntity.ok(newUser);
     }
 }

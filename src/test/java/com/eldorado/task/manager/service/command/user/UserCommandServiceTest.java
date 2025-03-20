@@ -24,7 +24,8 @@ public class UserCommandServiceTest {
     void testCreateUser() {
         UserCommandDTO userCommandDTO = UserCommandDTO.builder()
                                                        .email("williame.rocha10@gmail.com")
-                                                       .name("Williame Rocha")
+                                                       .firstName("Williame")
+                                                       .lastName("Rocha")
                                                        .password("123456")
                                                        .build();
 

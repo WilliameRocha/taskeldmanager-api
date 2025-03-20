@@ -12,7 +12,11 @@ import lombok.Setter;
 public class UserCommandDTO {
     @Size(min = 1, max = 100, message = "Name must be between 1 and 100 characters")
     @NotBlank(message = "Name is required")
-    private String name;
+    private String firstName;
+
+    @Size(min = 1, max = 100, message = "Name must be between 1 and 100 characters")
+    @NotBlank(message = "Lastname is required")
+    private String lastName;
 
     @Email(message = "Email is not valid")
     @NotBlank(message = "Email is required")

@@ -18,7 +18,8 @@ public class UserCommandRepository implements IUserCommandRepository {
     @Transactional
     public User createUser(UserCommandDTO userCommandDTO) {
         User user = User.builder()
-                        .name(userCommandDTO.getName())
+                        .firstName(userCommandDTO.getFirstName())
+                        .lastName(userCommandDTO.getLastName())
                         .email(userCommandDTO.getEmail())
                         .password(userCommandDTO.getPassword())
                         .build();

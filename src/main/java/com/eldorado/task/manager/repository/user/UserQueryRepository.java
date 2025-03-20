@@ -25,7 +25,8 @@ public class UserQueryRepository implements IUserQueryRepository {
                    .stream()
                    .map(user -> UserQueryDTO.builder()
                                                   .id(user.getId())
-                                                  .name(user.getName())
+                                                  .firstName(user.getFirstName())
+                                                  .lastName(user.getLastName())
                                                   .email(user.getEmail())
                                                   .build())
                   .collect(Collectors.toList());
@@ -38,7 +39,8 @@ public class UserQueryRepository implements IUserQueryRepository {
         if(user != null) {
             userQueryDTO = UserQueryDTO.builder()
                                        .id(user.getId())
-                                       .name(user.getName())
+                                       .firstName(user.getFirstName())
+                                       .lastName(user.getLastName())
                                        .email(user.getEmail())
                                        .build();
         }
@@ -56,7 +58,8 @@ public class UserQueryRepository implements IUserQueryRepository {
                    .findFirst()
                    .map(user -> UserQueryDTO.builder()
                         .id(user.getId())
-                        .name(user.getName())
+                        .firstName(user.getFirstName())
+                        .lastName(user.getLastName())
                         .email(user.getEmail())
                         .build());
     }

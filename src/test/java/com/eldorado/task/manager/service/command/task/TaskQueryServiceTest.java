@@ -34,8 +34,6 @@ public class TaskQueryServiceTest {
     @BeforeEach
     public void setUp() {
 
-
-
         TaskCommandDTO newTask = TaskCommandDTO.builder()
                                                .title("New Task")
                                                .deadline(LocalDate.now())
@@ -64,9 +62,4 @@ public class TaskQueryServiceTest {
         Optional<TaskQueryDTO> taskQueryDTO = this.iTaskQueryRepository.getTaskById(1L);
         assertFalse(taskQueryDTO.isPresent());
     }
-
-//    @Override
-//    public List<TaskQueryDTO> getTasksByStatus(TaskQueryByStatusRequestDTO filter) {
-//        return this.iTaskQueryRepository.getTasksByStatus(filter);
-//    }
 }

@@ -4,6 +4,7 @@ import com.eldorado.task.manager.domain.dto.task.TaskQueryByStatusRequestDTO;
 import com.eldorado.task.manager.domain.dto.task.TaskQueryDTO;
 import com.eldorado.task.manager.enums.TasksStatusEnum;
 import com.eldorado.task.manager.service.command.interfaces.task.ITaskQueryService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -41,5 +42,10 @@ public class TaskQueryController {
                                                                         .orderByDirection(orderByDirection)
                                                                         .build();
         return ResponseEntity.ok(this.iTaskQueryService.getTasksByStatus(filter));
+    }
+
+    @GetMapping("/byuser/{userId}")
+    public ResponseEntity<List<TaskQueryDTO>> getTasksByUserId(@PathVariable() Long userId){
+        return ResponseEntity.ok(this.iTaskQueryService.getTasksByUserId(userId));
     }
 }

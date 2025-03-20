@@ -8,6 +8,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.*;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,6 +55,7 @@ public class TaskQueryRepository implements ITaskQueryRepository {
     }
 
     @Override
+    @Transactional
     public List<TaskQueryDTO> getTasksByUserId(Long userId) {
         return this.entityManager.createQuery("SELECT task FROM Task task WHERE task.user.id = :userId", Task.class)
                                  .setParameter("userId", userId)
