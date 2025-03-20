@@ -1,0 +1,11 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: eldpostgres
+    restart: always
+    environment:
+        POSTGRES_DB: taskeldmanager
+        POSTGRES_USER: eldmanager
+        POSTGRES_PASSWORD: eldmanager
+    ports:
+        - "5432:5432"
